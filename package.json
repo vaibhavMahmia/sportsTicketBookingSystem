@@ -1,0 +1,20 @@
+{
+  "name": "sportsticketbookingsystem",
+  "version": "1.0.0",
+  "description": "This is sports ticket booking website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vaibhav",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "express": "^4.17.1",
+    "hbs": "^4.1.2",
+    "jquery": "^3.6.0",
+    "mongoose": "^5.13.5",
+    "nodemon": "^2.0.12",
+    "path": "^0.12.7"
+  }
+}
