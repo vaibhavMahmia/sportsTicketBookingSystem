@@ -31,6 +31,13 @@ app.get("/signup", (req, res) => {
     res.render('signup');
 });
 
+app.post("/signup", (req, res) => {
+    res.send("Signed IN");
+});
+
+app.post("/login", (req, res) => {
+    res.send("Loged IN");
+})
 
 //server create
 app.listen(port, () => {
