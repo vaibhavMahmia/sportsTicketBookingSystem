@@ -18,6 +18,7 @@ app.use('/js', express.static(path.join(__dirname, "../node_modules/bootstrap/di
 app.use('/jq', express.static(path.join(__dirname, "../node_modules/jquery/dist")));
 app.use('/customcss', express.static(path.join(__dirname, "../public/css")));
 app.use('/icon', express.static(path.join(__dirname, "../images")));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(staticpath));
@@ -44,32 +45,44 @@ app.get("/signup", (req, res) => {
     res.render('signup');
 });
 
-app.post('/signup', function (request, response) {
-    var user = new User();
-    user.email = request.body.email;
-    user.password = request.body.password;
-    user.save(function(err, savedUser) {
-       if (err) {
-           response.status(500).send({error:"Could not register User"});
-       } else {
-           response.render('login');
-       }
-    });
+app.post('/signup', async (req, res) => {
+    try{
+        const password = req.body.password;
+        const cpassword = req.body.confirmpassword;
+        if(password === cpassword){
+            const user = new User({
+                email:req.body.email,
+                password:password,
+                confirmpassword:cpassword
+            });
+            const registered = await user.save();
+            res.status(201).render('login');
+        }
+        else{
+            res.send("passwords are not matching");
+        }
+    }
+    catch(error){
+        res.status(400).send(error);
+    }
 });
 
-app.post("/login", (req, res, next) => {
-
-    User.find({email:req.body.email}, (err,usr) => {
-        if(err) return next(err);
-        if(!usr) {
-            res.render('login');
+app.post("/login", async (req, res) => {
+    try{
+        const email = req.body.email;
+        const password = req.body.password;
+        const useremail = await User.findOne({email:email});
+        if(useremail.password === password){
+            res.status(201).render('index');
         }
-        else {
-            res.send('Login Sucessful');
+        else{
+            res.send('Invalid Crediantials');
         }
-    });
-
-})
+    }
+    catch(error){
+        res.status(400).send("Invalid Email");
+    }
+});
 
 //server create
 app.listen(port, () => {
