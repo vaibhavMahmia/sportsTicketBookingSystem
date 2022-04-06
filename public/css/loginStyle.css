@@ -1,53 +1,45 @@
-body {
-    background: -moz-radial-gradient(rgb(255, 244, 89), rgb(251, 255, 191));
-    background: -webkit-radial-gradient(rgb(255, 244, 89), rgb(251, 255, 191));
-    background: rgb(255, 244, 89);
-}
-.container {
-    margin-right: 300px;
-    margin-left: 300px;
-    margin-top: 100px;
-    background-color: rgb(0, 105, 105);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 5px 10px #888888;
+body.signin-body {
+    background-color: #05010c;
 }
 
-.head {
+.container.signin-container {
+    margin-top: 8%;
+}
+
+.card.signin-card {
+    padding: 40px 0px 20px;
+    background-color: #073b33;
+    box-shadow: 2px 2px 15px rgba(211, 102, 13, 0.5);
+}
+.card-block{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+img.signin-img {
+    margin: auto;
+    display: block;
+    width: 30%;
+}
+
+form.signin-form {
+    max-width: 350px;
+    margin: auto;
+}
+
+button.signin-btn {
+    color: white;
+    background-color: rgb(214, 140, 2);
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+label.remember {
+    color: aliceblue;
+}
+
+.newAccount {
+    font-size: 1.2rem;
     text-align: center;
-    color: orange;
-    background-color: grey;
-}
-
-.fom {
-    text-align: center;
-    padding: 10px;
-}
-
-#inp {
-    padding: 8px;
-    width: 400px;
-    border: none;
-    border-radius: 6px;
-}
-
-#btn {
-    padding: 8px;
-    width: 413px;
-    background-color: orange;
-    text-decoration: solid;
-    font-weight: 1000;
-    border: none;
-    border-radius: 6px;
-}
-
-#btn:hover {
-    padding: 8px;
-    width: 413px;
-    background-color: black;
-    color: orange;
-    text-decoration: solid;
-    font-weight: 1000;
-    border: none;
-    border-radius: 6px;
+    display: block;
+    margin-top: 15px;
 }

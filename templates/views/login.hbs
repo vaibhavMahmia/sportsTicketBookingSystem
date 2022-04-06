@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/customcss/loginStyle.css">
-    <title>Sports Ticket Booking Login</title>
-
-</head>
-<body>
-    <div class="container">
-        <div class="head">
-            <h1>Sports Ticket Booking Login</h1>
-        </div>
-        <div class="fom">
-            <form action="" method="post">
-                <input type="text" name="username" id="inp" placeholder="username">
-                <br><br>
-                <input type="password" name="password" id="inp" placeholder="password">
-                <br><br>
-                <input type="submit" value="LOGIN" id="btn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/customcss/loginStyle.css" />
+  </head>
+  <body class="signin-body">
+    <div class="container signin-container">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-8">
+          <div class="card signin-card">
+            <div class="card-block">
+              <img src="/icon/favicon.ico" class="img-fluid signin-img" /><br>
+              <form class="signin-form" method="post" action="/login">
+              <div class="form-group">
+                
+                <input
+                  type="email"
+                  class="form-control"
+                  id="emailInput"
+                  placeholder="Email"
+                />
+              </div>
+              <br>
+              <div class="form-group">
+                
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passwordInput"
+                  placeholder="Password"
+                />
+              </div>
+              <br>
+              <button type="submit" class="btn btn-lg signin-btn">Login</button>
+              
             </form>
+            </div>
+          </div>
+          
         </div>
+        <div class="col"></div>
+      </div>
     </div>
-    
-    
-</body>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
 </html>
