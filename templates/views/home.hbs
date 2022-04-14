@@ -8,9 +8,34 @@
     <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/customcss/style.css">
+    <link rel="stylesheet" href="/customcss/home.css">
     <title>Sports Ticket Booking</title>
     <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
-   
+    <style>
+      
+       .vertical-scrollable> .row {
+          position: absolute;
+          
+          left: 180px;
+          width: 50%;
+          overflow-y: scroll; 
+        }
+        .col-sm-8 { 
+            color: white; 
+            font-size: 24px; 
+            padding-bottom: 20px; 
+            padding-top: 18px; 
+        } 
+          
+        .col-sm-8:nth-child(2n+1) { 
+            background: green; 
+        } 
+          
+        .col-sm-8:nth-child(2n+2) { 
+            background: black; 
+        } 
+  
+    </style> 
 
 
 
@@ -35,6 +60,17 @@
                 x.className = "topnav"
             }
         }
+
+        const PATCH = (id,uid) => {
+            fetch(`/login/:{id}/:{uid}`, {
+            //requires an id to patch
+                method: `PATCH`,
+                body: JSON.stringify({
+                //your data here
+            }),
+            headers: { 'Content-type': `application/json; charset=UTF-8` },
+        }).then((response) => response.json())
+  }
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

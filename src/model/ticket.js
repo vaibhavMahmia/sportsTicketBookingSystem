@@ -25,6 +25,10 @@ var ticket = new Schema({
     seatnumber:{
         type: Number,
         required: true
+    },
+    avalibelity: {
+        type: Boolean, 
+        default: true
     }
 });
 

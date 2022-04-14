@@ -30,14 +30,16 @@ app.set('views', templatepath);
 hbs.registerPartials(partialpath);
 //routing
 
-app.all('/*', function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "POST, GET");
-    next();
-});
+
 app.get("/", (req, res) => {
-    res.render('index');
+    Ticket.find((err, eventname) => {
+        if(!err){
+            res.status(201).render('index', {list: eventname});
+        }
+        else {
+            console.log('ERROR ! ');
+        }
+    });
 });
 
 app.get("/login", (req, res) => {
@@ -76,7 +78,15 @@ app.post("/login", async (req, res) => {
         const password = req.body.password;
         const useremail = await User.findOne({ email: email });
         if (useremail.password === password) {
-            res.status(201).render('home', { uname: email });
+            Ticket.find((err, eventname) => {
+                if(!err){
+                    res.status(201).render('home', { uname: email , list: eventname, uid: useremail._id});
+                }
+                else {
+                    console.log('ERROR ! ');
+                }
+            });
+            
         }
         else {
             res.send('Invalid Crediantials');
@@ -133,6 +143,35 @@ app.post('/adminpage', async (req, res) => {
         res.status(400).send(error);
     }
 });
+
+app.delete('/delete_data', (req, res) => {
+    Ticket.findOneAndDelete({}, (err, data) => {
+        if(err){
+            console.log(err);
+            return res.status(500).send();
+        }
+        else{
+            res.render('index')
+        }
+    });
+});
+
+
+
+app.patch("/login/:id/:uid", async (req, res) => {
+    console.log(req.params.id);
+    
+    let ticket = await Ticket.findById(req.params.id);
+    if (!ticket) return res.status(400).send("Ticket Not Found");
+    let user = await User.findById(req.params.uid);
+    if (!user) return res.status(400).send("User Not Found");
+  
+    
+    ticket = await Ticket.updateOne({_id:req.params.id},{$set: {avalibelity:false}});
+    user = await User.updateOne({_id:req.params.uid},{$set: {tickets:req.params.id}});
+    if(!ticket && !user) return res.status(404).send('The ticket record not Updated')
+    res.status(200).send('Ticket Record Updated')
+  });
 //server create
 app.listen(port, () => {
     console.log(`server is running on port ${port}`);

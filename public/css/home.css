@@ -1,0 +1,15 @@
+div.ticketAvailable {
+    background-color: black;
+    padding: 15px;
+    border-radius: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+p.ticketPrice {
+    color: brown;
+}
+
+div.eachTicket {
+    background-color: orange;
+    color: black;
+}
